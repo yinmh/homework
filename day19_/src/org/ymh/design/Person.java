@@ -1,7 +1,7 @@
 package org.ymh.design;
 
 import java.io.*;
-
+//实现两个接口
 public class Person implements Cloneable , Serializable {
     private String name;
     private Integer age;
@@ -21,7 +21,7 @@ public class Person implements Cloneable , Serializable {
     public void setAge(Integer age) {
         this.age = age;
     }
-
+//重写Cloneable的clone方法，该方法内部实现序列化和反序列化
     @Override
     protected Object clone() throws CloneNotSupportedException {
         ByteArrayOutputStream bo = new ByteArrayOutputStream();

@@ -19,25 +19,29 @@ public class User {
         this.password = password;
         this.id = id;
     }
-    public   static class UserBuilder{
+
+    public static class UserBuilder {
         private String username;
         private String password;
         private Integer id;
-
-        public  UserBuilder username(String username){
+        //设计技巧：返回值是该内部类对象为了调用时候实现链式编程
+        public UserBuilder username(String username) {
             this.username = username;
             return this;
         }
-        public  UserBuilder password(String password){
+
+        public UserBuilder password(String password) {
             this.password = password;
             return this;
         }
-        public  UserBuilder id(Integer id){
+
+        public UserBuilder id(Integer id) {
             this.id = id;
             return this;
         }
-        public User build(){
-            return  new User(this.username,this.password,this.id);
+
+        public User build() {
+            return new User(this.username, this.password, this.id);
         }
     }
 }
