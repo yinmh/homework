@@ -1,9 +1,6 @@
 package org.ymh.spider;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,33 +13,26 @@ public class Main {
         HttpURLConnection url = (HttpURLConnection) new
                 URL("https://tieba.baidu.com/p/2256306796?red_tag=1781367364").openConnection();
         InputStream in = url.getInputStream();
-        int len =0;
-        byte[] bytes = new byte[1024];
+        BufferedReader r = new BufferedReader(new InputStreamReader(in));
+        String line =null;
+        StringBuffer sb = new StringBuffer();
+        while ((line=r.readLine())!=null){
+            sb.append(line);
+        }
+        ArrayList<String> imgList = getSrc(sb.toString());
+        for (String s : imgList) {
+            if (s.endsWith(".jpg")) {
+                String[] split = s.split("src=\"");
+                Download(split[1]);
 
-        while ((len=in.read(bytes))!=-1){
-            String str = new String(bytes, 0, len, "utf-8");
-            ArrayList<String> imgList = getSrc(str);
-            ArrayList<String> list = new ArrayList<>();
-            for (String s : imgList) {
-                if (s.endsWith(".jpg"))
-                    Download(s);
             }
         }
     }
 
-    public static ArrayList<String> getImgList(String str) {
-        ArrayList<String> list = new ArrayList<>();
-        Pattern compile = Pattern.compile("<img.*src=(.*?)[^>]*?>");
-        Matcher matcher = compile.matcher(str);
-        while (matcher.find()) {
-                list.add(matcher.group());
-        }
-        return list;
-    }
-    public static ArrayList<String> getSrc(String path){
+    public static ArrayList<String> getSrc(String html){
         ArrayList<String> srcList = new ArrayList<>();
-        Pattern compile = Pattern.compile("[a-zA-z]+://[^\\s]*");
-        Matcher matcher = compile.matcher(path);
+        Pattern compile = Pattern.compile("<img class=\"BDE_Image\" src=\"(.*?)\"");
+        Matcher matcher = compile.matcher(html);
         while (matcher.find()) {
             srcList.add(matcher.group().substring(0,matcher.group().length() - 1));
         }
