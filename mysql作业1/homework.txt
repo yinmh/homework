@@ -1,0 +1,53 @@
+﻿1.查询姓“李”的老师的个数
+select count(*) '姓李老师的个数' from teacher where t_name like '李%';
+2.查询男女生人数个数
+select count(*) 人数,s_sex from student group by s_sex;
+3.查询同名同姓学生名单，并统计同名人数
+select count(*) 人数,s_name from student group by s_name having count(*)>1;
+4.1981年出生的学生名单
+select * from student where year(s_age) = 1981;
+5.查询平均成绩大于60分的同学的学号和平均成绩
+select s_id,avg(score) from sc group by s_id having avg(score) >60;
+6.求选了课程的学生人数
+
+7.查询至少选修两门课程的学生学号
+select count(*) '课程数' ,s_id  '学生ID' from sc group by s_id having count(*) >=2;
+8.查询各科成绩最高和最低的分。以如下形式显示：课程ID，最高分，最低分
+select c_id '课程ID',max(score) '最高分',min(score) '最低分' from sc group by c_id;
+9.统计每门课程的学生选修人数。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列
+select count(*) '选修人数',c_id '课程号' from sc group by c_id order by count(*) desc,c_id asc; 
+
+10.打印入职时间超过38年的员工信息
+select * from emp where now()-year(hiredate) > 38;
+11.把hiredate列看做是员工的生日,求本月过生日的员工
+select * from emp where month(hiredate) = month(now());
+12.把hiredate列看做是员工的生日,求下月过生日的员工
+select * from emp where date_add(month(now()), interval 1 month) = month(hiredate) ;
+13.求1980年下半年入职的员工
+select * from emp where month(hiredate)>6;
+14.请用两种的方式查询所有名字长度为4的员工的员工编号,姓名
+方式1：
+select empno, ename from emp where length(ename) =4;
+方式2：
+select empno, ename from emp where ename like '____';
+15.显示各种职位的最低工资
+select min(sal),job from emp group by job;
+16.求1980年各个月入职的的员工个数
+select count(*) from emp group by hiredate having year(hiredate)=1980;
+17.查询每个部门的最高工资
+select max(sal),deptno from emp group by deptno;
+18.查询每个部门,每种职位的最高工资
+select max(sal),deptno,job from emp group by deptno,job;
+19.查询各部门的总工资和平均工资
+select sum(sal) '总工资',avg(sal) '平均工资' from emp group by deptno;
+20.查询10号部门,20号部门的平均工资（尝试用多种写法）
+select avg(sal) '平均工资',deptno from emp group by deptno having deptno=10 or deptno=20;
+21.查询平均工资高于2000元的部门编号和平均工资
+select deptno,avg(sal) from emp group by deptno having avg(sal) >=2000;
+22.统计公司里经理的人数
+select count(*) '经理人数',from emp group by job having job='MANAGER';
+23.查询工资最高的3名员工信息
+select * from emp order by sal desc limit 3;
+查询工资由高到低第6到第10的员工信息
+select * from emp order by sal desc limit 6,10;
+
