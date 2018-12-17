@@ -88,15 +88,42 @@ select s.s_id,avg(score) from student s inner join sc on(s.s_id = sc.s_id)
 	       inner join course c on (sc.c_id = c.c_id) group by s.s_id having(avg(score)>80);
 
 9.查询课程相同且成绩相同的的学生的学号、课程号、学生成绩
+select a.* from sc a inner join (select c_id,score from sc group by c_id,score
+having(count(*)>=2)) b on a.c_id=b.c_id and a.score=b.score;
 10.查询全部学生都选修的课程的课程号和课程名
+select sc.c_id,c.c_name,s_id from sc inner join course c on(sc.c_id = c.c_id) group by s_id;
 11.查询两门以上不及格课程的同学的学号及其平均成绩
-
+select avg(score),s_id from sc where score <60 group by s_id,score having(count(*) >2) ;
 三、子查询练习
 1.查询所有课程成绩都小于等于60分的同学的学号、姓名
+select s.s_id,s_name from student s where s_id in (select s_id from sc group by s_id having max(score)<60);
 2.查询没有学全所有课的同学的学号、姓名
+select s_name ,s.s_id from student s inner join
+(select count(*),s_id from sc group by s_id having count(*)<(select count(*) from course)) b
+on s.s_id = b.s_id;
 3.查询每门课程选修人数，格式为课程名称，人数
+select c.c_name 课程名称,b.count 人数 from course c inner join
+(select count(*) count,c_id from sc group by c_id) b
+on b.c_id = c.c_id;
 4.查询全部学生都选修的课程的课程号和课程名
+select c.c_id,c_name from course c inner join
+(select count(*),c_id from sc group by sc.c_id having count(*) = (select count(*) from student)) b
+on c.c_id = b.c_id;
+
 5.查询两门以上不及格课程的同学的学号及其平均成绩
+select sc.s_id,avg(score) from sc inner join
+(select s_id from sc where score<60 group by s_id having count(*)>=2) b
+on sc.s_id = b.s_id;
 6.查询2号课程成绩比1号课程成绩低的学生的学号、姓名
+select s.s_id,s.s_name from (select a.s_id from (select s_id,c_id,score from sc where c_id=1) a
+inner join (select s_id,c_id,score from sc where c_id=2)b on a.s_id=b.s_id and a.score>b.score) c
+inner join student s where c.s_id=s.s_id;
 7.查询学过1号课程并且也学过编号2号课程的同学的学号、姓名
+select * from (select a.s_id from (select s_id from sc where c_id=2)
+inner join (select s_id from sc where c_id=1) b on a.s_id = b.s_id) c
+inner join student s
+on s.s_id = c.s_id;
 8.查询没学过“叶平”老师课的同学的学号、姓名
+select s_name,s.s_id from student s inner join
+(select sc.s_id,sc.c_id from sc inner join (select c_id from course c inner join teacher t on c.t_id = t.t_id where t.t_name = '叶平') a on sc.c_id = a.c_id) c
+on s.s_id = c.s_id;

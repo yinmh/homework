@@ -5,7 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/day19_/day19_爬虫.iml" filepath="$PROJECT_DIR$/day19_/day19_爬虫.iml" />
       <module fileurl="file://$PROJECT_DIR$/day20_/day20_.iml" filepath="$PROJECT_DIR$/day20_/day20_.iml" />
       <module fileurl="file://$PROJECT_DIR$/day19_/day21_.iml" filepath="$PROJECT_DIR$/day19_/day21_.iml" />
+      <module fileurl="file://$PROJECT_DIR$/homework.iml" filepath="$PROJECT_DIR$/homework.iml" />
       <module fileurl="file://$PROJECT_DIR$/mysql作业1/mysql作业1.iml" filepath="$PROJECT_DIR$/mysql作业1/mysql作业1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mysql作业2andJDBC练习/mysql作业2andJDBC练习.iml" filepath="$PROJECT_DIR$/mysql作业2andJDBC练习/mysql作业2andJDBC练习.iml" />
     </modules>
   </component>
 </project>
