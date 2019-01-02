@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My BaiDu</title>
+    <style>
+        *{
+            margin-left: 0;
+            margin-right: 0;
+        }
+        a{
+            list-style: none;
+            font-size: 15px;
+            color: black;
+            text-decoration: underline;
+        }
+        .main{
+            width: 100%;
+        }
+        .nav li{
+            float: right;
+            margin-right:10px;
+        }
+        .pic{
+           position: absolute;
+            width: 350px;
+            height: auto;
+            left: 500px;
+        }
+        .guid{
+            position: absolute;
+            width: 900px;
+            height: 50px;
+            top: 200px;
+            left: 239px;
+            line-height: 50px;
+        }
+        .text{
+            width: 698px;
+            height: 46px;
+            border: 1px solid gray;
+            border-right: none;
+            float: left;
+            font-size: 35px;
+
+        }
+        .btn{
+            width: 200px;
+            height: 50px;
+            color: white;
+            font-size: 20px;
+            background-color: rgba(0, 0, 255, 0.55);
+            border: 1px solid gray;
+            cursor: pointer;
+        }
+        .guid>img{
+            position: absolute;
+            top: 10px;
+            right: 210px;
+            width: 45px;
+            height: auto;
+        }
+        .column{
+            position: absolute;
+            bottom: 50px;
+            margin: 0 auto;
+            left: 200px;
+            width: 1024px;
+            text-align: center;
+        }
+        .column>a{
+            margin-left: 10px;
+        }
+        .xiala{
+            position: absolute;
+            right: 0;
+            top:0;
+            width:80px;
+            height: 700px;
+            background-color: rgb(249, 249, 249);
+            display: none;
+            z-index: -10;
+        }
+        .xiala>ul>li{
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 60px;
+            height: 60px;
+            list-style: none;
+            margin-top: 20px;
+            font-size: 11px;
+            text-align: center;
+        }
+        .ewm{
+            position: absolute;
+            bottom: 60px;
+            left: 450px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="nav">
+            <ul>
+                <li id="more" onmouseover="list()" onmouseout="quit()" style="margin-right: 0;list-style: none;margin-top: -6px;background-color: rgba(0,0,255,0.77);width: 80px;height: 30px;text-align: center;line-height: 30px
+">更多产品</li>
+                <a href=""><li>设置</li></a>
+                <a href=""><li>登录</li></a>
+                <a href=""><li>学术</li></a>
+                <a href=""><li>贴吧</li></a>
+                <a href=""><li>视频</li></a>
+                <a href=""><li>地图</li></a>
+                <a href=""><li>hao123</li></a>
+                <a href=""><li>新闻</li></a>
+            </ul>
+
+            <div class="xiala">
+                <ul>
+                    <li><img src="1.png" style="margin-top: 7px;margin-left: -3px">百度糯米</li>
+                    <li><img src="2.png" style="margin-top: 7px">音乐</li>
+                    <li><img src="3.png" style="margin-top: 7px">图片</li>
+                    <li><img src="4.png" style="margin-top: 7px">知道</li>
+                    <li><img src="5.png" style="margin-top: 7px">文库</li>
+                    <li><img src="6.png" style="margin-top: 7px;margin-left: 5px">风云榜</li>
+                </ul>
+                <p style="display: inline-block;text-decoration: underline;margin-left: 20px;margin-top:40px;font-size: 11px">全部产品</p>
+            </div>
+        </div>
+        <img class="pic" src="1.gif"></img>
+        <div class="guid">
+            <input type="text" class="text">
+            <input type="button" class="btn" value="百度一下">
+            <img src="1.bmp" alt="">
+        </div>
+
+        <div class="column" style="color:rgba(109, 99, 99, 0.76);font-size:5px">
+            <div class="ewm">
+                <img src="7.png">
+                <p>百度</p>
+            </div>
+            <a href="#">把百度设为首页</a>
+            <a href="#">关于百度</a>
+            <a href="#">about baidu</a>
+            <a href="#">百度推广</a>
+            </br>
+            ©2018 Baidu
+            <a href="#" style="text-decoration-line:underline">使用百度前必读</a>
+            <a href="#" style="text-decoration-line: underline">意见反馈</a>> 京ICP证030173号
+            <i class="marker icon"></i> 京公网安备11000002000001号
+        </div>
+    </div>
+</body>
+<script>
+    console.log(document.getElementById("xiala"))
+    function list() {
+        document.querySelector(".xiala").style.display ="block";
+        document.getElementById("more").style.backgroundColor ="rgb(249, 249, 249)";
+    }
+    function quit() {
+        document.querySelector(".xiala").style.display ="none";
+        document.getElementById("more").style.backgroundColor ="rgba(0,0,255,0.77)";
+    }
+</script>
+</html>
