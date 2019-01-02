@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .in {
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 25px;
+            margin-top: 30px;
+            margin-left: 50px;
+        }
+
+        .in1 {
+            width: 180px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 25px;
+            margin-top: 30px;
+            margin-left: 32px;
+            margin-right: 20px;
+        }
+
+        .btn {
+            height: 36px;
+            width: 100px;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        function bl() {
+            var username = document.getElementById("us").value;
+            console.log(username)
+            var pattern = /.{2,}/;
+            if (!pattern.test(username)) {
+                document.getElementById("msg1").innerHTML = "用户名 长度必须至少2个字符 ";
+            } else {
+                document.getElementById("msg1").innerHTML = "用户名可用";
+            }
+        }
+
+        // 如果有字母、数字、特殊字符其中三项，且长度为6以上为高强度
+        // 如果有字母、数字、特殊字符其中两项，且长度为6以上为中强度
+        // 剩余情况，为低强度
+        function bl2() {
+            var pwd = document.getElementById("pwd").value;
+            console.log(pwd)
+            var pattern1 = /.+/;
+            var pattern2 = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Za-z]{1,})|(?=.*\d)(?=.*[!@#$%^&*?\(\)])|(?=.*[A-Za-z]{1,})(?=.*[!@#$%^&*?\(\)]).*$/;
+            var pattern3 = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Za-z]{1,})(?=.*[!@#$%^&*?\(\)]).*$/;
+            if (pattern1.test(pwd)) {
+                if (pattern2.test(pwd)) {
+                    if (pattern3.test(pwd)) {
+                        document.getElementById("msg2").innerHTML = "密码强度为<span style='color: lawngreen'>高强度</span>";
+                    } else {
+                        document.getElementById("msg2").innerHTML = "密码强度为<span style='color: lawngreen'>中强度</span>";
+                    }
+                } else {
+                    document.getElementById("msg2").innerHTML = "密码强度为:<span style='color: lawngreen'>低强度</span>";
+                }
+            }else{
+                document.getElementById("msg2").innerHTML = "请输入密码";
+            }
+        }
+        var i = 60;
+        function send() {
+            if(i==60){
+                document.getElementById('verfy').disabled = true;
+            }
+            setTimeout(function () {
+                document.getElementById("verfy").value = "重新发送("+i+"s)";
+                i--;
+                if(i>=1) {
+                    send();
+                    console.log(i);
+                }
+            },100);
+            if(i==1){
+                document.getElementById('verfy').disabled = false;
+            }
+        }
+        function tijiao() {
+          if(document.getElementById('agree').checked){
+              alert("checkbox is checked");
+          }
+
+        }
+    </script>
+</head>
+<body>
+<form class="form">
+    用户名：<input type="text" id="us" class="in" placeholder="请输入用户名 " onblur="bl()">
+    <span style=" font-size: 25px; color: #ff0000" id="msg1"></span>
+
+    <br>
+    密码:<input type="password" class="in" style="margin-left: 77px" placeholder="请输入密码" id="pwd" onblur="bl2()">
+    <span style=" font-size: 25px; color: #ff0000" id="msg2"></span>
+    <br>
+    短信验证码<input type="text" name="" id="" class="in1">
+    <input type="button" value="发送验证码" class="btn" id="verfy" onclick="send()" >
+    <br>
+    <input type="checkbox" id="agree">&nbsp;我已阅读并同意
+    <span style=" font-size: 20px; color: #ff0000" id="msg3"></span>
+    <br>
+    <input type="submit" value="提交" class="btn" checked="true">
+    <input type="reset" value="重置" class="btn" onclick="tijiao()" >
+</form>
+
+</body>
+</html>

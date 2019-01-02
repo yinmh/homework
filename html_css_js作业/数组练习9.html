@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var arr = [1, 2, 4, 4, 3, 3, 1, 5, 3]
+        function duplicates(arr) {
+            arr.sort()
+            var new_arr =[];
+            for(var i=0;i<arr.length;i++){
+                var index = arr[i];
+                for(var j=i+1;j<arr.length;j++){
+                    if(index == arr[j]){
+                        new_arr.push(arr[j]);
+                    }
+                }
+            }
+            return new_arr;
+        }
+        var new_arr = duplicates(arr);
+        console.log(new_arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

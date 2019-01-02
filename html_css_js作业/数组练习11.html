@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var arr = [ 1, 2, 3, 4, 5, 6, 1, 7]
+        function findAllOccurrences(arr, target) {
+            var index_arr = [];
+            for(var i=0;i<arr.length;i++){
+                if(arr[i] == target){
+                    index_arr.push(i);
+                }
+            }
+            return index_arr;
+        }
+        var index_arr = findAllOccurrences(arr,1);
+        console.log(index_arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

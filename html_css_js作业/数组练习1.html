@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var arr = [1,2,3,4]
+        function indexOf(arr, item) {
+            for(var i=0;i<arr.length;i++){
+                if(item == arr[i])
+                    return i;
+            }
+            return -1;
+        }
+
+        function sum(arr) {
+            var s = 0;
+            for(var i=0;i<arr.length;i++){
+               s += arr[i];
+            }
+            return s;
+        }
+        var index = indexOf(arr,3);
+        var s = sum(arr);
+        console.log(index);
+        console.log(s);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

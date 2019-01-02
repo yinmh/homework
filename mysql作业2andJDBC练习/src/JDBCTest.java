@@ -10,9 +10,7 @@ public class JDBCTest {
         String sql = sc.nextLine();
         Query(statement, sql);
         //insert(statement, sql);
-
     }
-
     private static void insert(Statement statement, String sql) throws SQLException {
         int row = statement.executeUpdate(sql);
         if(row >0)

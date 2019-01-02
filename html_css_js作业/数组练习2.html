@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var arr = [1,2,3,4,2]
+        function remove(arr, item) {
+            var new_arr=[];
+            for(var i=0;i<arr.length;i++){
+                if(item != arr[i]){
+                    new_arr.push(arr[i]);
+                }
+            }
+            return new_arr;
+        }
+        var new_arr = remove(arr,2);
+        console.log(new_arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
