@@ -1,9 +1,11 @@
 <component name="libraryTable">
   <library name="mysql-connector-java-5.1.47">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/mysql作业2_and_JDBC练习/mysql-connector-java-5.1.47.jar!/" />
+      <root url="file://$PROJECT_DIR$/webDemo" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/webDemo/src/main/java" />
+    </SOURCES>
   </library>
 </component>
