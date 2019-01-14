@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ServletJSP综合案例/ServletJSP综合案例.iml" filepath="$PROJECT_DIR$/ServletJSP综合案例/ServletJSP综合案例.iml" />
       <module fileurl="file://$PROJECT_DIR$/day20_/day20_.iml" filepath="$PROJECT_DIR$/day20_/day20_.iml" />
       <module fileurl="file://$PROJECT_DIR$/day19_/day21_.iml" filepath="$PROJECT_DIR$/day19_/day21_.iml" />
       <module fileurl="file://$PROJECT_DIR$/homework.iml" filepath="$PROJECT_DIR$/homework.iml" />
